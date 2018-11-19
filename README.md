@@ -20,20 +20,20 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-#兔子商城项目
+# 兔子商城项目
 
-##项目准备
+## 项目准备
 
 1.用到的工具有 vue-cli . 
 2.项目依赖的框架 vue  mint-ui  mui
 
-##头部和尾部制作
+## 头部和尾部制作
 
 1.用 mint-ui 构建头部样式
 2.用 mui 构建tabBar样式
     - 修改tabBar图标
 
-##首页轮播图完成
+## 首页轮播图完成
 
 - 用到了 mint-ui 的 Swipe 模块
 - 通过 vue-resource 向后台接口发送 ajax 向后台获取图片和a链接的数据,渲染到页面上 
