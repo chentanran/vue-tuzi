@@ -1,33 +1,45 @@
 <template>
-  <div>
-      <!-- 头部 mint-ui-->
-      <mt-header fixed title="固定在顶部"></mt-header>
-      <!-- 底部 mui-->
-      <nav class="mui-bar mui-bar-tab">
-		    <a class="mui-tab-item mui-active" href="#tabbar">
-				<span class="mui-icon mui-icon-home"></span>
-				<span class="mui-tab-label">首页</span>
-		    </a>
-		    <a class="mui-tab-item" href="#tabbar-with-chat">
-		    	<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
-		    	<span class="mui-tab-label">消息</span>
-		    </a>
-		    <a class="mui-tab-item" href="#tabbar-with-contact">
-		    	<span class="mui-icon mui-icon-contact"></span>
-		    	<span class="mui-tab-label">通讯录</span>
-		    </a>
-		    <a class="mui-tab-item" href="#tabbar-with-map">
-		    	<span class="mui-icon mui-icon-gear"></span>
-		    	<span class="mui-tab-label">设置</span>
-		    </a>
-		</nav>
+  <div class="app_contain">
+		<!-- 头部 -->
+			<headers></headers>
+			<!-- 尾部 -->
+			<navbar></navbar>	
 
+		<transition mode="" >
+			<router-view></router-view>
+		</transition>	
   </div>
 </template>
 
 <script>
-export default {};
+		import headers from "./components/header/header.vue"
+		import navbar from "./components/footer/footer.vue"
+
+		export default {
+			components:{
+				headers,
+				navbar
+			}
+		}
 </script>
 
-<style>
+<style lang="less">
+		.app_contain{
+			overflow-x: hidden;
+			 background-color: #fff;
+			padding: 40px 0 50px 0;
+		}
+			.v-enter{
+				transform: translateX(100%);
+				opacity: 0;
+				// transition: all 1s;
+			}
+			.v-leave-to{
+				position: absolute;
+				opacity: 0;
+				transform: translateX(-100%);
+			}
+			.v-enter-active, .v-leave-active{
+				transition: all 1s;
+			}
 </style>
