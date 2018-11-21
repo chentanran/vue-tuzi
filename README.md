@@ -55,4 +55,21 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 - 通过 vue 的 transition 标签属性 使组件间切换有过渡的动画效果
 
+## 新闻列表页完成
 
+- 完成基本页面布局
+- 完成ajax数据获取
+- 完成列表页id跳转到详情页
+
+## 新闻详情页
+
+- 新闻详情页页面布局完成
+- 新闻详情页数据获取完成
+
+## 评论页面
+
+- 抽离评论页面
+- 页面布局完成
+- 插入到新闻详情页
+- 获取评论数据
+- 完成发表评论功能
