@@ -24,14 +24,23 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## 项目准备
 
-1.用到的工具有 vue-cli . 
-2.项目依赖的框架 vue  mint-ui  mui
+- 用到的工具有 vue-cli . 
+- 项目依赖的框架 vue  mint-ui  mui
 
 ## 头部和尾部制作
 
-1.用 mint-ui 构建头部样式
-2.用 mui 构建tabBar样式
-    - 修改tabBar图标
+- 用 mint-ui 构建头部样式
+- 用 mui 构建tabBar样式
+- 修改tabBar图标
+
+## 路由模块完成
+
+- 前端路由锚点配置完成
+
+## 页面抽离完成
+
+- 将页面放到 page 文件夹
+- 将头部和尾部放到 components 文件夹中
 
 ## 首页轮播图完成
 
@@ -46,7 +55,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 - 通过 vue 的 transition 标签属性 使组件间切换有过渡的动画效果
 
-## 页面抽离完成
 
-- 将页面放到 page 文件夹
-- 将头部和尾部放到 components 文件夹中

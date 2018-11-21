@@ -1,5 +1,7 @@
 <template>
+        
     <div class="home_contain">
+    
         <!-- 轮播图板块 -->
        <mt-swipe class="home_swipe">
             <mt-swipe-item v-for="(item, i) in datas" :key="i">
@@ -10,9 +12,9 @@
         </mt-swipe>
         <!-- 九宫格 -->
          <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#/home/newsList">
 		                    <img src="../../image/img/menu1.png" class="mui-icon mui-icon-home">
-		                    <div class="mui-media-body">Home</div></a></li>
+		                    <div class="mui-media-body">新闻列表</div></a></li>
                         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <img src="../../image/img/menu2.png" class="mui-icon mui-icon-home">
 		                    <div class="mui-media-body">Home</div></a></li>
@@ -29,19 +31,20 @@
 		                    <img src="../../image/img/menu6.png" class="mui-icon mui-icon-home">
 		                    <div class="mui-media-body">Home</div></a></li>
 
-                              <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <img src="../../image/img/menu1.png" class="mui-icon mui-icon-home">
-		                    <div class="mui-media-body">Home</div></a></li>
-                              <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-		                    <img src="../../image/img/menu2.png" class="mui-icon mui-icon-home">
-		                    <div class="mui-media-body">Home</div></a></li>
 		        </ul> 
 
     </div>
+  
 </template>
 
 <script>
+    import headers from "../../components/header/header.vue"
+    import { Toast } from 'mint-ui'
+
     export default {
+        components:{
+            headers
+        },
         data(){
             return {
                  datas: null
@@ -52,10 +55,12 @@
         },
         methods:{
             banner(){
-                this.$http.get("http://www.lovegf.cn:8899/api/getlunbo").then(res => {
+                this.$http.get("api/getlunbo").then(res => {
                     let result = res.body;
                     if(result.status == 0){
                     this.datas = result.message;
+               }else{
+                  Toast("数据获取失败")
                }
             })
             }
