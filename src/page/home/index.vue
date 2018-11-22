@@ -15,9 +15,9 @@
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#/home/newsList">
 		                    <img src="../../image/img/menu1.png" class="mui-icon mui-icon-home">
 		                    <div class="mui-media-body">新闻列表</div></a></li>
-                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#/home/photoList">
 		                    <img src="../../image/img/menu2.png" class="mui-icon mui-icon-home">
-		                    <div class="mui-media-body">Home</div></a></li>
+		                    <div class="mui-media-body">图文列表</div></a></li>
                               <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <img src="../../image/img/menu3.png" class="mui-icon mui-icon-home">
 		                    <div class="mui-media-body">Home</div></a></li>

@@ -1,7 +1,7 @@
 <template>
     <div class="comment-contain">
         <h3 class="comment">评论区:</h3>
-        <textarea placeholder="请发表你对本文章的评论!!"></textarea>
+        <textarea placeholder="请发表你对本文章的评论!!" v-model="contents"></textarea>
         <mt-button size="large" type="primary" class="btn-orange"  @click="addComment">发表评论</mt-button>
          <ul class="content-ul">
              <li class="list" v-for="(item,i) in items" :key="item.id">
@@ -9,7 +9,7 @@
                  <div class="list-content">{{item.content ? item.content : "此用户给了好评"}}</div>
              </li>
         </ul>  
-         <mt-button size="large" type="primary" class="btn-plain" >加载更多</mt-button>
+         <mt-button size="large" type="primary" class="btn-plain" @click="addloader">加载更多</mt-button>
     </div>    
 </template>
 
@@ -19,21 +19,20 @@
     export default {
         data(){
             return {
-                items : "",
-                pageindex: 1
+                items : [],
+                pageindex: 1,
+                contents : ""
             }
         },
         created(){
             this.getComment();
-            // console.log(this.$router)
         },
         methods:{
             //获取评论
             getComment(){
                 this.$http.get(`api/getcomments/${this.$route.params.id}?pageindex=${this.pageindex}`).then(res=>{
-                    // console.log(res);
                     if(res.body.status == 0){
-                        this.items = res.body.message;
+                        this.items = this.items.concat(res.body.message);
                     }else{
                         Toast("数据获取失败")
                     }
@@ -41,17 +40,28 @@
             },
             //发表评论
             addComment(){
-                 let content = document.querySelector("textarea").value;
+                if(this.contents.trim()){
+                    Toast("文本为空,请输入内容")
+                }
 
-                this.$http.post(`api/postcomment/${this.$route.params.id}`, { content : content }, {emulateJSON: true}).then(res=>{
+                this.$http.post(`api/postcomment/${this.$route.params.id}`, { content : this.contents }, {emulateJSON: true}).then(res=>{
                     if(res.body.status == 0){
-                        this.getComment()
+                       Toast(res.body.message);
+                       this.pageindex = 1;
+                       this.items = [];
+                        this.contents = "";
+                      this.getComment();
                     }else{
                         Toast("数据获取失败")
                     }
                 })
                
               
+            },
+            //加载更多
+            addloader(){
+                this.pageindex++;
+                this.getComment();
             }
         }
     }
