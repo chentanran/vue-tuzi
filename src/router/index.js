@@ -19,7 +19,7 @@ export default new Router({
     {path: "/home", component: home},
     {path: "/member", component: member},
     {path: "/search", component: search},
-    {path: "/shopcar", component: shopcar},
+    {path: "/shoppingcart", component: shoppingcart},
     {path: "/", redirect: "/home"},
     {path: "/home/newslist", component: newsList},
     {path: "/home/newsinfo/:id", component: newsInfo},

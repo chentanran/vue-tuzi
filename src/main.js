@@ -6,12 +6,13 @@ import vueRouter from "vue-router"
 Vue.use(vueRouter)
 
 //引入mint-ui头部
-import { Header, Swipe,SwipeItem, Button,Lazyload } from 'mint-ui'
+import { Header, Swipe,SwipeItem, Button,Lazyload,Switch  } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.component(Header.name,Header)
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Button.name, Button)
+Vue.component(Switch.name, Switch);
 Vue.use(Lazyload);
 
 
