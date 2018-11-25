@@ -9,6 +9,10 @@ import shopcar from "../page/shopcar"
 import newsList from "../page/newsList/newsList.vue"
 import newsInfo from "../page/newsInfo/newsinfo.vue"
 import photolist from "../page/photoList/photolist.vue"
+import photoinfo from "../page/photoInfo/photoinfo.vue"
+import goodsList from "../page/goodsList/goodslist.vue"
+import goodsinfo from "../page/goodsinfo/goodsinfo.vue"
+import goodsdesc from "../page/goodsdesc/goodsdesc.vue"
 
 export default new Router({
   routes: [
@@ -19,7 +23,11 @@ export default new Router({
     {path: "/", redirect: "/home"},
     {path: "/home/newslist", component: newsList},
     {path: "/home/newsinfo/:id", component: newsInfo},
-    {path: "/home/photolist", component: photolist}
+    {path: "/home/photolist", component: photolist},
+    {path: "/home/photoinfo/:id", component: photoinfo},
+    {path: "/home/goodslist", component: goodsList},
+    {path: "/home/goodsinfo/:id", component: goodsinfo, name: "goodsinfo"},
+    {path: "/home/goodsdesc/:id", component: goodsdesc, name: "goodsdesc"}
   ],
   linkActiveClass: "mui-active"
 })
