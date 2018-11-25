@@ -9,9 +9,7 @@
                 <p class="price"><span class="market-price">市场价: <i>¥{{contentData.market_price}}</i></span><span class="sales-price">销售价: <i>¥{{contentData.sell_price}}</i></span></p>
                 <div class="size">
                 <span class="">购买数量:</span>
-                <div class="number">
-                    <span>-</span><input type="text" value="1"><span>+</span>    
-                </div>
+                <number :number="contentData.stock_quantity" @getnumber="getnumber"></number>
                 </div>
 
                     <mt-button size="normal" class="btn-left">立即购买</mt-button>
@@ -42,10 +40,12 @@
 
 <script>
 import swiper from "../../components/swiper/swiper.vue"
+import number from "../../components/goodsinfo_number/goodsinfo_number.vue"
 
 export default {
     components:{
-        swiper
+        swiper,
+        number
     },
     data(){
         return {
@@ -62,13 +62,20 @@ export default {
             contentData: [],  //商品参数数据
             show : false,  // 控制小球显示影藏
             ball : "", //小球
-            x: null,
-            y: null
+            x: null,// 小球坐标
+            y: null,
+            // num: null, //商品数量
+            dots: "", //获取点的Dom元素
+            num : 1, //选择商品数量 
         }
     },
     created(){
         this.getimg()
         this.getContent()
+       
+    },
+    mounted(){
+         this.dots = document.querySelector(".mui-badge")
     },
     methods:{
         //轮播图图片
@@ -101,7 +108,11 @@ export default {
             this.$router.push({path: `/home/goodsdesc/${this.id}`})
 
         },
-
+        //
+        getnumber(num){
+            // console.log(num)
+            this.num = num.num;
+        },
         //小球动画
        
          beforeEnter: function (el) {
@@ -112,18 +123,27 @@ export default {
             
          },
          enter: function (el, done) {
-         
-
+            //  this.dots.innerText = 0
+             this.dots.innerText =  parseInt(this.dots.innerText) + parseInt(this.num);
+            //  console.log(this.dots.innerText)
+             //获取小球的位置
+            this.x = document.querySelector(".ball").getBoundingClientRect().left;
+            this.y = document.querySelector(".ball").getBoundingClientRect().top;
+            //获取小圆点的位置
+            // var dot = document.querySelector(".mui-badge").getBoundingClientRect();
+            var dot = this.dots.getBoundingClientRect();
+            var a = dot.left - this.x;
+            var b = dot.top - this.y;
+       
             el.offsetWidth;
-                // el.style.transform = "translate(110px,290px)"
-                el.style.transform = `translate(${z}px,${i}px)`
+
+                el.style.transform = `translate(${a}px,${b}px)`
                 el.style.transition = "all 2s cubic-bezier(0,.41,1,.46)"
            
             done()
             },
         afterEnter: function (el) {
-            
-            // ...
+           
             this.show = !this.show
         },
     }
@@ -164,27 +184,7 @@ export default {
                 display: flex;
                 line-height: 30px;
                 margin-bottom: 10px;
-                .number{
-                    margin-left: 20px;
-                    display: flex;
-                    width: 100px;
-                    border: 1px solid #ccc;
-                    text-align: center;
-                    line-height: 30px;
-                    
-                    span{
-                       flex: 1; 
-                       height: 30px;
-                       background-color: orange;
-                    }
-                    input{
-                        flex: 1;
-                        padding: 0;
-                        margin: 0;
-                        height: 30px;
-                        text-align:center;
-                    }
-                }
+               
             }
             .btn-left{
                 background-color: skyblue;

@@ -12,7 +12,7 @@
 export default {
     props:["datas","img"],
     created(){
-        console.log(this.datas)
+        // console.log(this.datas)
     }
 }
 </script>

@@ -1,7 +1,12 @@
 <template>
   <div class="app_contain">
 		<!-- 头部 -->
-			<headers></headers>
+			<headers>
+				 <router-link to="/" slot="left">
+    				<mt-button icon="back">返回</mt-button>
+  					</router-link>
+  					<mt-button  slot="right">...	</mt-button>
+			</headers>
 			<!-- 尾部 -->
 			<navbar></navbar>	
 

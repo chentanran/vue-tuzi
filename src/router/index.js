@@ -5,7 +5,7 @@ import Router from 'vue-router'
 import home from "../page/home"
 import member from "../page/member"
 import search from "../page/search"
-import shopcar from "../page/shopcar"
+import shoppingcart from "../page/shoppingcart/shoppingcart.vue"
 import newsList from "../page/newsList/newsList.vue"
 import newsInfo from "../page/newsInfo/newsinfo.vue"
 import photolist from "../page/photoList/photolist.vue"
