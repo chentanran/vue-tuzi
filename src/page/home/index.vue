@@ -70,7 +70,7 @@
                 this.$http.get("api/getlunbo").then(res => {
                     let result = res.body;
                     if(result.status == 0){
-                        console.log( result.message)
+                        // console.log( result.message)
                          result.message.forEach((element,i) => {
                              element.img = this.list[i]
                          });

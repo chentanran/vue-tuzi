@@ -45,6 +45,8 @@ Vue.filter("datastr",(value,datafmt = "YYYY-MM-HH hh:mm:ss")=>{
   return moment(value).format(datafmt)
 })
 
+//引入vuex
+import store from "./vuex/vuex.js"
 
 Vue.config.productionTip = false
 
@@ -56,5 +58,6 @@ new Vue({
     mui('body').on('click','a',function(){document.location.href=this.href});
   },
   router,
+  store,
   render: h => h(App)
 })

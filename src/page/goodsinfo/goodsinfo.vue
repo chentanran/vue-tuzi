@@ -13,7 +13,7 @@
                 </div>
 
                     <mt-button size="normal" class="btn-left">立即购买</mt-button>
-                    <mt-button size="normal" class="btn-right" @click="show = !show">加入购物车</mt-button>
+                    <mt-button size="normal" class="btn-right" @click="getgoodsinfo">加入购物车</mt-button>
             </div>
         </div>
         <!-- 商品参数页 -->
@@ -61,18 +61,13 @@ export default {
             img : false, //子组件传值, 改变图片宽度
             contentData: [],  //商品参数数据
             show : false,  // 控制小球显示影藏
-            ball : "", //小球
-            x: null,// 小球坐标
-            y: null,
-            // num: null, //商品数量
-            dots: "", //获取点的Dom元素
             num : 1, //选择商品数量 
         }
     },
     created(){
         this.getimg()
         this.getContent()
-       
+        
     },
     mounted(){
          this.dots = document.querySelector(".mui-badge")
@@ -92,12 +87,12 @@ export default {
             })
         },
         //商品详情数据
-        getContent(){
+        getContent(){   
             this.$http.get("api/goods/getinfo/" + this.id).then(res=>{
            
                 if(res.body.status == 0){
                    this.contentData = res.body.message[0];
-             
+                   console.log(this.contentData)
                 }else{
                     alert("获取数据失败")
                 }
@@ -108,10 +103,22 @@ export default {
             this.$router.push({path: `/home/goodsdesc/${this.id}`})
 
         },
-        //
+        //获取子组件传来的数据
         getnumber(num){
             // console.log(num)
             this.num = num.num;
+        },
+        //获取商品数据
+        getgoodsinfo(){
+            this.show = !this.show;
+            
+            let goodsinfo = {
+                id: this.contentData.id,  //商品id
+                num : this.num, //商品数量
+                select: true //选中按钮
+            }
+            // console.log(goodsinfo)
+            this.$store.commit("getCar", goodsinfo)
         },
         //小球动画
        
@@ -123,17 +130,17 @@ export default {
             
          },
          enter: function (el, done) {
-            //  this.dots.innerText = 0
-             this.dots.innerText =  parseInt(this.dots.innerText) + parseInt(this.num);
-            //  console.log(this.dots.innerText)
+           
+            //  this.dots.innerText =  parseInt(this.dots.innerText) + parseInt(this.num);
+           
              //获取小球的位置
-            this.x = document.querySelector(".ball").getBoundingClientRect().left;
-            this.y = document.querySelector(".ball").getBoundingClientRect().top;
+            let x = document.querySelector(".ball").getBoundingClientRect().left;
+            let y = document.querySelector(".ball").getBoundingClientRect().top;
             //获取小圆点的位置
-            // var dot = document.querySelector(".mui-badge").getBoundingClientRect();
-            var dot = this.dots.getBoundingClientRect();
-            var a = dot.left - this.x;
-            var b = dot.top - this.y;
+            var dot = document.querySelector(".mui-badge").getBoundingClientRect();
+            // let dot = this.dots.getBoundingClientRect();
+            let a = dot.left - x;
+            let b = dot.top - y;
        
             el.offsetWidth;
 
