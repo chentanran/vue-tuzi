@@ -2,8 +2,12 @@
     <div>   
     <!-- 头部 mint-ui-->
       <mt-header fixed title="固定在顶部">
-          <slot name="left"></slot>
-          <slot name="right"></slot>
+          <!-- <slot name="left"></slot>
+          <slot name="right"></slot> -->
+          <!-- <router-link to="/" slot="left">
+    				<mt-button icon="back">返回</mt-button>
+  					</router-link>
+  					<mt-button  slot="right">...	</mt-button> -->
       </mt-header>
 
 </div>

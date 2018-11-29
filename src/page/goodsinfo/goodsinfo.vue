@@ -92,7 +92,7 @@ export default {
            
                 if(res.body.status == 0){
                    this.contentData = res.body.message[0];
-                   console.log(this.contentData)
+                //    console.log(this.contentData)
                 }else{
                     alert("获取数据失败")
                 }
@@ -115,6 +115,7 @@ export default {
             let goodsinfo = {
                 id: this.contentData.id,  //商品id
                 num : this.num, //商品数量
+                stocks: this.contentData.stock_quantity,
                 select: true //选中按钮
             }
             // console.log(goodsinfo)
